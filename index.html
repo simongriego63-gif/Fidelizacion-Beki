@@ -6,23 +6,24 @@
     <title>beki - CAFE</title>
     
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#F6C141">
+    <meta name="theme-color" content="#FCE17A">
     <link rel="apple-touch-icon" href="icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* Paleta beki CAFE */
-            --bg-main: #F6C141; /* Amarillo mostaza */
-            --accent: #F05A2B;  /* Naranja vibrante */
-            --dark: #4A0E17;    /* Bordó oscuro */
+            /* Paleta beki CAFE - El "Punto Caramelo" (Chill pero vivo) */
+            --bg-main: #FCE17A;  /* Amarillo base chill y cálido */
+            --bg-card: #FCD34D;  /* Amarillo un tono más vibrante para que la tarjeta resalte */
+            --accent: #F05A2B;   /* Naranja vibrante de la marca */
+            --dark: #4A0E17;     /* Bordó oscuro de la marca */
             --dark-soft: rgba(74, 14, 23, 0.15); /* Bordó con transparencia */
             --white: #FFFFFF;
             
-            /* Colores aurora adaptados a beki */
+            /* Colores aurora adaptados */
             --aurora-1: rgba(240, 90, 43, 0.15);
             --aurora-2: rgba(74, 14, 23, 0.1);
-            --aurora-3: rgba(255, 255, 255, 0.2);
+            --aurora-3: rgba(255, 255, 255, 0.3);
         }
 
         * {
@@ -115,11 +116,11 @@
         }
 
         .registro-card {
-            background: var(--bg-main);
+            background: var(--bg-card);
             border-radius: 24px;
             padding: 48px 32px;
             border: 3px solid var(--dark);
-            box-shadow: 8px 8px 0px rgba(74, 14, 23, 0.2);
+            box-shadow: 8px 8px 0px rgba(74, 14, 23, 0.15);
         }
 
         .logo-container {
@@ -180,7 +181,7 @@
             font-size: 16px;
             font-family: 'Inter', sans-serif;
             font-weight: 600;
-            background: transparent;
+            background: rgba(255, 255, 255, 0.5);
             color: var(--dark);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             outline: none;
@@ -191,9 +192,9 @@
             opacity: 0.4;
         }
 
+        /* Modificado: Ahora al hacer clic no se pone blanco, mantiene la transparencia */
         .input-box:focus {
             border-color: var(--accent);
-            background: var(--white);
             box-shadow: 0 0 0 4px rgba(240, 90, 43, 0.15);
         }
 
@@ -211,27 +212,27 @@
             cursor: pointer;
             margin-top: 12px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 15px rgba(240, 90, 43, 0.3);
+            box-shadow: 0 4px 15px rgba(240, 90, 43, 0.25);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(240, 90, 43, 0.4);
+            box-shadow: 0 6px 20px rgba(240, 90, 43, 0.35);
         }
 
         .btn-primary:active {
             transform: scale(0.98);
-            box-shadow: 0 2px 10px rgba(240, 90, 43, 0.3);
+            box-shadow: 0 2px 10px rgba(240, 90, 43, 0.25);
         }
 
         #btnInstalarApp {
-            display: none;
+            display: block; 
             width: 100%;
             margin-top: 16px;
             padding: 16px;
-            border-radius: 14px;
-            border: 2px solid var(--dark-soft);
-            background: transparent;
+            border-radius: 16px;
+            border: 2px dashed var(--accent);
+            background: rgba(255, 255, 255, 0.4);
             color: var(--dark);
             font-family: 'Inter', sans-serif;
             font-size: 14px;
@@ -241,7 +242,9 @@
         }
 
         #btnInstalarApp:hover {
-            background: var(--dark-soft);
+            background: rgba(240, 90, 43, 0.1);
+            border-color: var(--accent);
+            color: var(--accent);
         }
 
         /* === PANTALLA TARJETA === */
@@ -293,11 +296,11 @@
 
         /* === TARJETA PRINCIPAL === */
         .wallet-card {
-            background: var(--bg-main);
+            background: var(--bg-card);
             border-radius: 24px;
             padding: 32px;
             border: 3px solid var(--dark);
-            box-shadow: 8px 8px 0px rgba(74, 14, 23, 0.2);
+            box-shadow: 8px 8px 0px rgba(74, 14, 23, 0.15);
         }
 
         .card-header {
@@ -346,7 +349,7 @@
 
         /* === STAMPS/SELLOS === */
         .stamps-container {
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.4);
             border-radius: 20px;
             padding: 24px;
             margin-bottom: 24px;
@@ -375,6 +378,15 @@
             transition: all 0.4s ease;
         }
 
+        /* Nueva clase exclusiva para la manija para que no se rellene */
+        .stamp-cup .cup-handle {
+            fill: none;
+            stroke: var(--dark-soft);
+            stroke-width: 4; /* Un poco más gruesa para que quede linda */
+            stroke-linecap: round;
+            transition: all 0.4s ease;
+        }
+
         .stamp-cup .coffee-fill {
             fill: none;
             opacity: 0;
@@ -392,11 +404,16 @@
         /* Taza llena - animacion entrada */
         .stamp-cup.filled {
             transform: scale(1.1);
-            filter: drop-shadow(0 4px 0px rgba(74, 14, 23, 0.2));
+            filter: drop-shadow(0 4px 0px rgba(74, 14, 23, 0.15));
         }
 
         .stamp-cup.filled .cup-path {
             fill: var(--dark);
+            stroke: var(--dark);
+        }
+
+        /* La manija llena solo se le pinta el borde oscuro, pero NO el relleno */
+        .stamp-cup.filled .cup-handle {
             stroke: var(--dark);
         }
 
@@ -493,7 +510,7 @@
         }
 
         .qr-box {
-            background: var(--bg-main);
+            background: var(--bg-card);
             padding: 14px;
             border-radius: 18px;
             border: 2px solid var(--dark);
@@ -516,14 +533,14 @@
 
         /* === DORSO TARJETA === */
         .back {
-            background: var(--bg-main);
+            background: var(--bg-card);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 60px;
             border: 3px solid var(--dark);
-            box-shadow: 8px 8px 0px rgba(74, 14, 23, 0.2);
+            box-shadow: 8px 8px 0px rgba(74, 14, 23, 0.15);
             min-height: 500px;
         }
 
@@ -609,7 +626,7 @@
         .custom-modal-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(246, 193, 65, 0.8);
+            background: rgba(252, 225, 122, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             z-index: 3000;
@@ -620,14 +637,14 @@
         }
 
         .custom-modal-box {
-            background: var(--bg-main);
+            background: var(--bg-card);
             border-radius: 24px;
             padding: 36px 28px;
             width: 100%;
             max-width: 340px;
             text-align: center;
             border: 3px solid var(--dark);
-            box-shadow: 8px 8px 0px rgba(74, 14, 23, 0.2);
+            box-shadow: 8px 8px 0px rgba(74, 14, 23, 0.15);
             animation: modalIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
@@ -880,8 +897,7 @@
             abrirTarjeta(celular) {
                 this.cambiarPantalla('tarjeta');
                 
-                // === CAMBIO COLOR QR PARA BEKI ===
-                this.ui.qr.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${celular}&bgcolor=F6C141&color=4A0E17`;
+                this.ui.qr.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${celular}&bgcolor=FCD34D&color=4A0E17`;
                 this.ui.telLabel.innerText = `******${celular.slice(-4)}`;
 
                 this.unsubscribe = onSnapshot(doc(this.db, "clientes", celular), (docSnap) => {
@@ -922,12 +938,13 @@
             }
 
             obtenerSvgTaza() {
+                /* Modificado: Separé la manija en su propia etiqueta path con class="cup-handle" */
                 return `
                 <svg class="stamp-cup" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                     <path class="steam-path" d="M38,30 V12 M50,32 V8 M62,30 V16" stroke-linecap="round"/>
                     <path class="cup-path" d="M20,35 H80 V75 Q80,90 65,90 H35 Q20,90 20,75 Z" />
                     <path class="coffee-fill" d="M22,37 H78 V73 Q78,88 63,88 H37 Q22,88 22,73 Z" />
-                    <path class="cup-path" d="M80,45 Q95,45 95,60 T80,75" />
+                    <path class="cup-handle" d="M80,45 Q95,45 95,60 T80,75" />
                 </svg>`;
             }
 
@@ -939,7 +956,7 @@
         }
 
         window.onload = () => {
-            new BekiApp(); // Actualizado el nombre de la clase
+            new BekiApp();
         };
     </script>
     
