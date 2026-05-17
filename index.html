@@ -13,11 +13,11 @@
     <style>
         :root {
             /* Paleta beki CAFE - El "Punto Caramelo" (Chill pero vivo) */
-            --bg-main: #FCE17A;  /* Amarillo base chill y cálido */
-            --bg-card: #FCD34D;  /* Amarillo un tono más vibrante para que la tarjeta resalte */
-            --accent: #F05A2B;   /* Naranja vibrante de la marca */
-            --dark: #4A0E17;     /* Bordó oscuro de la marca */
-            --dark-soft: rgba(74, 14, 23, 0.15); /* Bordó con transparencia */
+            --bg-main: #FCE17A;  
+            --bg-card: #FCD34D;  
+            --accent: #F05A2B;   
+            --dark: #4A0E17;     
+            --dark-soft: rgba(74, 14, 23, 0.15); 
             --white: #FFFFFF;
             
             /* Colores aurora adaptados */
@@ -124,17 +124,16 @@
         }
 
         .logo-container {
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
-        .logo-circle {
-            width: 120px;
-            height: 120px;
-            background: transparent;
+        /* Nuevo contenedor animado para el texto + SVG */
+        .logo-animado {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            margin: 0 auto 20px;
+            margin: 0 auto 12px;
             animation: pulseGlow 4s ease-in-out infinite;
         }
 
@@ -147,7 +146,8 @@
             font-family: 'Montserrat', sans-serif;
             font-weight: 900;
             color: var(--accent);
-            font-size: 42px;
+            font-size: 48px;
+            line-height: 1;
             letter-spacing: -1px;
         }
 
@@ -155,8 +155,9 @@
             font-size: 15px;
             color: var(--dark);
             opacity: 0.8;
-            font-weight: 600;
-            letter-spacing: 0.5px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            margin-top: 8px;
         }
 
         .input-group {
@@ -192,7 +193,6 @@
             opacity: 0.4;
         }
 
-        /* Modificado: Ahora al hacer clic no se pone blanco, mantiene la transparencia */
         .input-box:focus {
             border-color: var(--accent);
             box-shadow: 0 0 0 4px rgba(240, 90, 43, 0.15);
@@ -313,19 +313,10 @@
         .logo-small {
             font-family: 'Montserrat', sans-serif;
             font-weight: 900;
-            font-size: 28px;
+            font-size: 32px;
+            line-height: 0.9;
             color: var(--accent);
             letter-spacing: -1px;
-        }
-
-        .logo-tagline {
-            font-size: 11px;
-            color: var(--dark);
-            font-weight: 700;
-            letter-spacing: 1px;
-            margin-top: 0px;
-            display: block;
-            text-transform: uppercase;
         }
 
         .user-info {
@@ -378,11 +369,10 @@
             transition: all 0.4s ease;
         }
 
-        /* Nueva clase exclusiva para la manija para que no se rellene */
         .stamp-cup .cup-handle {
             fill: none;
             stroke: var(--dark-soft);
-            stroke-width: 4; /* Un poco más gruesa para que quede linda */
+            stroke-width: 4; 
             stroke-linecap: round;
             transition: all 0.4s ease;
         }
@@ -401,7 +391,6 @@
             opacity: 0;
         }
 
-        /* Taza llena - animacion entrada */
         .stamp-cup.filled {
             transform: scale(1.1);
             filter: drop-shadow(0 4px 0px rgba(74, 14, 23, 0.15));
@@ -412,7 +401,6 @@
             stroke: var(--dark);
         }
 
-        /* La manija llena solo se le pinta el borde oscuro, pero NO el relleno */
         .stamp-cup.filled .cup-handle {
             stroke: var(--dark);
         }
@@ -439,7 +427,6 @@
             100% { transform: translateY(-15px); opacity: 0; }
         }
 
-        /* Stagger animation para las tazas */
         .stamp-cup.filled:nth-child(1) { animation-delay: 0ms; }
         .stamp-cup.filled:nth-child(2) { animation-delay: 50ms; }
         .stamp-cup.filled:nth-child(3) { animation-delay: 100ms; }
@@ -544,11 +531,9 @@
             min-height: 500px;
         }
 
-        .back-logo-circle {
-            width: 160px;
-            height: 160px;
-            background: transparent;
+        .back-logo-animado {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             margin-bottom: 24px;
@@ -564,9 +549,10 @@
             font-family: 'Montserrat', sans-serif;
             font-weight: 900;
             color: var(--accent);
-            font-size: 52px;
+            font-size: 56px;
             letter-spacing: -2px;
             margin: 0;
+            line-height: 1;
         }
 
         .back-subtitle {
@@ -575,6 +561,7 @@
             font-weight: 800;
             letter-spacing: 6px;
             text-transform: uppercase;
+            margin-top: 12px;
         }
 
         /* === BOTON CERRAR SESION === */
@@ -710,10 +697,13 @@
         <div id="pantallaRegistro">
             <div class="registro-card">
                 <div class="logo-container">
-                    <div class="logo-circle">
+                    <div class="logo-animado">
                         <span class="logo-text">beki</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" width="130" height="52" style="margin-top: -5px;">
+                          <text x="100" y="70" font-family="'Arial Black', Arial, sans-serif" font-weight="900" font-size="65" fill="var(--dark)" text-anchor="middle" letter-spacing="-2">CAFE</text>
+                        </svg>
                     </div>
-                    <p class="welcome-text">CAFE ESPECIALIDAD</p>
+                    <p class="welcome-text">ESPECIALIDAD</p>
                 </div>
                 
                 <div class="input-group">
@@ -739,9 +729,11 @@
                     <div class="front">
                         <div class="wallet-card">
                             <div class="card-header">
-                                <div>
+                                <div style="display: flex; flex-direction: column;">
                                     <div class="logo-small">beki</div>
-                                    <span class="logo-tagline">CAFE</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" width="75" height="30" style="margin-top: 2px;">
+                                      <text x="0" y="65" font-family="'Arial Black', Arial, sans-serif" font-weight="900" font-size="65" fill="var(--dark)" text-anchor="start" letter-spacing="-2">CAFE</text>
+                                    </svg>
                                 </div>
                                 <div class="user-info">
                                     <div class="user-nickname" id="displayNombre">...</div>
@@ -773,10 +765,13 @@
                     </div>
                     
                     <div class="back">
-                        <div class="back-logo-circle">
+                        <div class="back-logo-animado">
                             <h2 class="back-logo-text">beki</h2>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" width="150" height="60" style="margin-top: -2px;">
+                              <text x="100" y="70" font-family="'Arial Black', Arial, sans-serif" font-weight="900" font-size="65" fill="var(--dark)" text-anchor="middle" letter-spacing="-2">CAFE</text>
+                            </svg>
                         </div>
-                        <div class="back-subtitle">CAFE</div>
+                        <div class="back-subtitle">ESPECIALIDAD</div>
                     </div>
                 </div>
             </div>
@@ -938,7 +933,6 @@
             }
 
             obtenerSvgTaza() {
-                /* Modificado: Separé la manija en su propia etiqueta path con class="cup-handle" */
                 return `
                 <svg class="stamp-cup" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                     <path class="steam-path" d="M38,30 V12 M50,32 V8 M62,30 V16" stroke-linecap="round"/>
