@@ -1,11 +1,12 @@
 {
-  "id": "app-admin",
+  "id": "beki-app-admin",
   "name": "Panel - beki CAFE",
   "short_name": "beki Admin",
   "start_url": "./admin.html",
   "display": "standalone",
   "background_color": "#FCE17A",
   "theme_color": "#FCE17A",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "icon.png",
