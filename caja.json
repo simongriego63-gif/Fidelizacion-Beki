@@ -1,11 +1,12 @@
 {
-  "id": "app-caja",
+  "id": "beki-app-caja",
   "name": "Caja - beki CAFE",
   "short_name": "beki Caja",
   "start_url": "./barista.html",
   "display": "standalone",
   "background_color": "#FCE17A",
   "theme_color": "#FCE17A",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "icon.png",
